@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -14,10 +13,13 @@ const nextConfig = {
     minimumCacheTTL: 60,
     deviceSizes: [320, 420, 768, 1024, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    unoptimized: true,
   },
   experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', 'framer-motion', 'recharts'],
   },
+  // Increase timeout for static generation (default 60s is too short for heavy pages)
+  staticPageGenerationTimeout: 120,
   async headers() {
     return [
       {

@@ -3,6 +3,8 @@ import { HeroSection } from '@/features/landing/components/hero-section'
 import { FeaturesSection } from '@/features/landing/components/features-section'
 import { StoresSection } from '@/features/landing/components/stores-section'
 import { CTASection } from '@/features/landing/components/cta-section'
+
+export const dynamic = 'force-dynamic'
 import { LandingNav } from '@/features/landing/components/landing-nav'
 import { LandingFooter } from '@/features/landing/components/landing-footer'
 
