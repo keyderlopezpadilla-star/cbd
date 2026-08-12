@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 96%;
+
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 96%;
+
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 96%;
+
+    --primary: 142 100% 50%;
+    --primary-foreground: 0 0% 2%;
+
+    --secondary: 0 0% 7%;
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 0 0% 7%;
+    --muted-foreground: 0 0% 47%;
+
+    --accent: 142 100% 50%;
+    --accent-foreground: 0 0% 2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 10%;
+    --input: 0 0% 10%;
+    --ring: 142 100% 50%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cbd-black-secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-cbd-gray rounded-full hover:bg-cbd-green-dark;
+  transition: background-color 0.2s ease;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* CBD Green Glow Effect */
+.glow-green {
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.3);
+}
+
+.glow-green-strong {
+  box-shadow: 0 0 40px rgba(0, 255, 102, 0.5);
+}
+
+/* Smooth Transitions */
+.transition-smooth {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Premium Text Gradient */
+.text-gradient-green {
+  @apply bg-gradient-to-r from-cbd-green via-cbd-green-light to-cbd-green-dark bg-clip-text text-transparent;
+}
+
+/* Card Hover Effect */
+.card-hover {
+  @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-cbd-green/20;
+}
+
+/* Loading Spinner */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

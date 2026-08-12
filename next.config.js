@@ -1,0 +1,46 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: [],
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 60,
+    deviceSizes: [320, 420, 768, 1024, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+  },
+  experimental: {
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+  },
+  webpack: (config) => {
+    config.externals.push({
+      'utf-8-validate': 'commonjs utf-8-validate',
+      'bufferutil': 'commonjs bufferutil',
+    })
+    return config
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-XSS-Protection', value: '1; mode=block' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(self), payment=(self)' },
+          { key: 'X-DNS-Prefetch-Control', value: 'on' },
+          { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+        ],
+      },
+      {
+        source: '/api/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'no-store, no-cache, must-revalidate' },
+        ],
+      },
+    ]
+  },
+}
+
+module.exports = nextConfig
