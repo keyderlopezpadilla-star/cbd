@@ -36,8 +36,8 @@ export function ReorderRecommendations() {
       }
       // Sort by date (Hoy first, then Manana, etc.)
       const dateOrder: Record<string, number> = { Hoy: 0, Manana: 1 }
-      const aOrder = dateOrder[a.optimalOrderDate] ?? parseInt(a.optimalOrderDate) || 99
-      const bOrder = dateOrder[b.optimalOrderDate] ?? parseInt(b.optimalOrderDate) || 99
+      const aOrder = (dateOrder[a.optimalOrderDate] ?? parseInt(a.optimalOrderDate)) || 99
+      const bOrder = (dateOrder[b.optimalOrderDate] ?? parseInt(b.optimalOrderDate)) || 99
       return aOrder - bOrder
     })
   }, [sortField])
