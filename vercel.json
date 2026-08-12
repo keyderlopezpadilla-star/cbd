@@ -2,7 +2,7 @@
   "framework": "nextjs",
   "regions": ["iad1"],
   "buildCommand": "npx prisma generate && npm run build",
-  "installCommand": "npm ci",
+  "installCommand": "npm install",
   "headers": [
     {
       "source": "/api/(.*)",
