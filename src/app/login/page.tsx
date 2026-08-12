@@ -1,7 +1,11 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { LoginForm } from '@/features/auth/components/login-form'
-import { Login3D } from '@/components/3d/login-3d'
+
+const Login3D = dynamic(() => import('@/components/3d/login-3d').then(mod => ({ default: mod.Login3D })), {
+  ssr: false,
+})
 
 export const metadata: Metadata = {
   title: 'Sign In - CBD SaaS Platform',

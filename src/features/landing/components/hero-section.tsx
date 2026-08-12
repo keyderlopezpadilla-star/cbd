@@ -2,9 +2,13 @@
 
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
-import { Hero3D } from '@/components/3d/hero-3d'
 import { ArrowRight, Sparkles } from 'lucide-react'
+
+const Hero3D = dynamic(() => import('@/components/3d/hero-3d').then(mod => ({ default: mod.Hero3D })), {
+  ssr: false,
+})
 
 export function HeroSection() {
   return (

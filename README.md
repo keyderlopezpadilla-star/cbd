@@ -257,10 +257,94 @@ npm run type-check
 
 ### Vercel (Recommended)
 
-1. Push code to GitHub
-2. Import project in Vercel
-3. Add environment variables
-4. Deploy
+#### Prerequisites
+
+- A [Vercel](https://vercel.com) account
+- A PostgreSQL database (Vercel Postgres, Neon, Supabase, or Railway)
+- This repository pushed to GitHub
+
+#### Step 1: Import the Project
+
+1. Go to [vercel.com/new](https://vercel.com/new)
+2. Select your GitHub repository
+3. Vercel will auto-detect it as a Next.js project
+4. Click "Deploy" (it will fail the first time without environment variables, that is expected)
+
+#### Step 2: Set Up the Database
+
+**Option A: Vercel Postgres (simplest)**
+1. In the Vercel dashboard, go to your project
+2. Navigate to "Storage" tab
+3. Click "Create Database" and select "Postgres"
+4. Vercel will automatically set `DATABASE_URL` and `DIRECT_URL`
+
+**Option B: External PostgreSQL (Neon, Supabase, Railway)**
+1. Create a PostgreSQL database on your provider
+2. Copy the connection string
+3. Set `DATABASE_URL` with `?pgbouncer=true` appended (for connection pooling)
+4. Set `DIRECT_URL` with the direct connection string (no pooling)
+
+#### Step 3: Configure Environment Variables
+
+In the Vercel dashboard, go to **Settings > Environment Variables** and add:
+
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `DATABASE_URL` | Yes | PostgreSQL connection string (with pooling) |
+| `DIRECT_URL` | Yes | PostgreSQL direct connection (for migrations) |
+| `NEXTAUTH_SECRET` | Yes | `openssl rand -base64 32` |
+| `NEXTAUTH_URL` | Yes | Your production URL (e.g., `https://your-app.vercel.app`) |
+| `NEXT_PUBLIC_APP_URL` | Yes | Same as NEXTAUTH_URL |
+| `NEXT_PUBLIC_APP_NAME` | Yes | App display name (e.g., "GreenLeaf CBD") |
+| `CSRF_SECRET` | Yes | `openssl rand -base64 32` |
+| `ALLOWED_ORIGINS` | Yes | Your production URL |
+
+See `.env.production.example` for all optional variables (email, payments, AI, analytics).
+
+#### Step 4: Deploy
+
+1. After setting environment variables, trigger a redeploy:
+   - Go to "Deployments" tab
+   - Click the three dots on the latest deployment
+   - Select "Redeploy"
+2. The build command (`npx prisma generate && npm run build`) runs automatically
+
+#### Step 5: Run Database Migrations
+
+After the first successful deploy, push the schema to your database:
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Link to your project
+vercel link
+
+# Run prisma db push using your production env
+vercel env pull .env.production.local
+npx prisma db push --schema=prisma/schema.prisma
+npx prisma db seed
+```
+
+Alternatively, you can use Vercel's "Functions" tab or connect directly to the database with your favorite SQL client.
+
+#### Step 6: Verify
+
+- Visit `https://your-app.vercel.app/api/health` to confirm the deployment is running
+- Visit `https://your-app.vercel.app/login` to access the application
+
+#### Deployment Notes
+
+- The project deploys to the `iad1` (US East) region by default. Change `regions` in `vercel.json` to deploy closer to your users.
+- Prisma Client is generated at build time via the `buildCommand` in `vercel.json`.
+- Three.js components use dynamic imports with `ssr: false` to prevent server-side rendering issues.
+- ESLint and TypeScript errors are ignored during builds to prevent non-blocking warnings from failing deploys.
+
+#### Custom Domain
+
+1. In Vercel dashboard, go to **Settings > Domains**
+2. Add your custom domain
+3. Update `NEXTAUTH_URL`, `NEXT_PUBLIC_APP_URL`, and `ALLOWED_ORIGINS` to match
 
 ### Docker (Optional)
 

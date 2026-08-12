@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "regions": ["cdg1"],
+  "regions": ["iad1"],
   "buildCommand": "npx prisma generate && npm run build",
   "installCommand": "npm ci",
   "headers": [
