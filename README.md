@@ -1,377 +1,298 @@
-# 🌿 CBD SaaS Platform
-
-Premium multi-store management platform designed specifically for CBD franchises.
-
-## 🚀 Overview
-
-A modern, scalable SaaS platform for managing CBD retail operations across multiple stores. Built with cutting-edge technology stack featuring Next.js 14+, TypeScript, PostgreSQL, Prisma, and AI-powered features.
-
-## ✨ Key Features
-
-- **Multi-Store Management** - Centralized dashboard for managing 5+ retail locations
-- **Smart Inventory** - AI-powered stock tracking with predictive analytics
-- **Point of Sale** - Fast, compliance-ready POS system
-- **Customer CRM** - Complete relationship management with loyalty programs
-- **Advanced Analytics** - Real-time insights and performance metrics
-- **AI Assistant** - Intelligent business assistant for data queries
-- **GDPR Compliance** - Full data privacy and consent management
-- **Role-Based Access Control** - Granular permissions for different user roles
-- **Stock Transfers** - Seamless inventory transfers between stores
-- **Marketing & Campaigns** - Integrated promotional tools
-
-## 🚀 Quick Start
-
-### Development Setup
-
-1. **Clone and install**
-```bash
-cd cbd-saas
-npm install
-```
-
-2. **Configure environment**
-```bash
-cp .env.example .env
-# Edit .env with your database URL and secrets
-```
-
-3. **Setup database**
-```bash
-npm run db:push
-npm run db:seed
-```
-
-4. **Run development server**
-```bash
-npm run dev
-```
-
-5. **Access the application**
-- Landing: http://localhost:3000/landing
-- Login: http://localhost:3000/login
-- Dashboard: http://localhost:3000/dashboard (requires login)
-
-### Demo Credentials
-
-```
-Email: admin@example.com
-Password: password123
-```
-
-## 🛠️ Tech Stack
-
-### Frontend
-- **Next.js 14+** - React framework with App Router
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first styling
-- **shadcn/ui** - Premium component library
-- **Framer Motion** - Smooth animations
-- **GSAP** - Advanced animation timelines
-- **React Three Fiber** - 3D graphics and WebGL
-- **Zustand** - State management
-- **React Query** - Server state management
-
-### Backend
-- **Next.js API Routes** - Serverless functions
-- **Prisma ORM** - Type-safe database queries
-- **PostgreSQL** - Relational database
-- **NextAuth.js v5** - Authentication
-- **Zod** - Runtime validation
-
-### Infrastructure
-- **Vercel** - Hosting and deployment
-- **PostgreSQL** - Managed database
-- **Redis** - Caching (optional)
-
-## 📦 Installation
-
-### Prerequisites
-
-- Node.js 18+ or 20+
-- npm or pnpm
-- PostgreSQL database
-
-### Setup
-
-1. **Clone the repository**
-```bash
-git clone <repository-url>
-cd cbd-saas
-```
-
-2. **Install dependencies**
-```bash
-npm install
-```
-
-3. **Setup environment variables**
-```bash
-cp .env.example .env
-```
-
-Edit `.env` and configure:
-- `DATABASE_URL` - Your PostgreSQL connection string
-- `NEXTAUTH_SECRET` - Generate with `openssl rand -base64 32`
-- `NEXTAUTH_URL` - Your application URL
-- Other API keys as needed
-
-4. **Setup database**
-```bash
-npm run db:push
-npm run db:seed
-```
-
-5. **Run development server**
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## 🏗️ Project Structure
-
-```
-cbd-saas/
-├── src/
-│   ├── app/                    # Next.js app router
-│   │   ├── landing/           # Public landing page
-│   │   ├── login/             # Authentication
-│   │   └── dashboard/         # Protected dashboard
-│   ├── components/            # Shared components
-│   │   ├── ui/               # Base UI components (shadcn)
-│   │   ├── layout/           # Layout components
-│   │   ├── forms/            # Form components
-│   │   ├── charts/           # Chart components
-│   │   └── 3d/               # Three.js components
-│   ├── features/             # Feature modules
-│   │   ├── auth/
-│   │   ├── dashboard/
-│   │   ├── stores/
-│   │   ├── products/
-│   │   ├── inventory/
-│   │   ├── sales/
-│   │   ├── orders/
-│   │   ├── customers/
-│   │   └── analytics/
-│   ├── lib/                  # Utilities and helpers
-│   │   ├── constants/
-│   │   ├── validations/
-│   │   └── api/
-│   ├── server/               # Server-side code
-│   │   ├── actions/         # Server actions
-│   │   ├── api/             # API utilities
-│   │   ├── db/              # Database utilities
-│   │   └── auth/            # Auth configuration
-│   ├── hooks/               # Custom React hooks
-│   ├── stores/              # Zustand stores
-│   ├── types/               # TypeScript types
-│   └── styles/              # Global styles
-├── prisma/
-│   ├── schema.prisma        # Database schema
-│   └── seed.ts              # Seed data
-├── public/                   # Static assets
-├── tests/                    # Test files
-├── docs/                     # Documentation
-└── config/                   # Configuration files
-```
-
-## 🎨 Design System
-
-### Colors
-
-**Primary Palette**
-- Black: `#050505`, `#0A0A0A`, `#111111`
-- Green: `#00FF66`, `#00D95F`, `#00B94A`
-- Gray: `#777777`, `#A0A0A0`, `#F5F5F5`
-
-### Component Library
-
-Built on **shadcn/ui** with custom CBD-themed styling. All components support:
-- Dark mode (default)
-- Glassmorphism effects
-- Smooth animations
-- Accessibility (WCAG 2.2 AA)
-
-## 👥 User Roles
-
-- **SUPER_ADMIN** - Platform-wide access
-- **ADMIN** - Full franchise access
-- **MANAGER** - Single store management
-- **EMPLOYEE** - Limited store operations
-- **ACCOUNTING** - Financial data access
-- **MARKETING** - Marketing and campaigns
-
-## 🔐 Security
-
-- HTTPS enforced
-- Bcrypt password hashing
-- CSRF protection
-- XSS prevention
-- SQL injection protection via Prisma
-- Rate limiting
-- Audit logging
-- GDPR compliance
-
-## 📊 Database Schema
-
-30+ models including:
-- User & Authentication
-- Organizations & Stores
-- Products & Inventory
-- Sales & Orders
-- Customers & Loyalty
-- Transfers & Movements
-- Marketing & Campaigns
-- Audit Logs
-- CMS Content
-
-See `prisma/schema.prisma` for full schema.
-
-## 🧪 Testing
-
-```bash
-# Unit tests
-npm run test
-
-# E2E tests
-npm run test:e2e
-
-# Type checking
-npm run type-check
-```
-
-## 📝 Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
-- `npm run db:generate` - Generate Prisma client
-- `npm run db:push` - Push schema to database
-- `npm run db:migrate` - Run migrations
-- `npm run db:seed` - Seed database
-- `npm run db:studio` - Open Prisma Studio
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-#### Prerequisites
-
-- A [Vercel](https://vercel.com) account
-- A PostgreSQL database (Vercel Postgres, Neon, Supabase, or Railway)
-- This repository pushed to GitHub
-
-#### Step 1: Import the Project
-
-1. Go to [vercel.com/new](https://vercel.com/new)
-2. Select your GitHub repository
-3. Vercel will auto-detect it as a Next.js project
-4. Click "Deploy" (it will fail the first time without environment variables, that is expected)
-
-#### Step 2: Set Up the Database
-
-**Option A: Vercel Postgres (simplest)**
-1. In the Vercel dashboard, go to your project
-2. Navigate to "Storage" tab
-3. Click "Create Database" and select "Postgres"
-4. Vercel will automatically set `DATABASE_URL` and `DIRECT_URL`
-
-**Option B: External PostgreSQL (Neon, Supabase, Railway)**
-1. Create a PostgreSQL database on your provider
-2. Copy the connection string
-3. Set `DATABASE_URL` with `?pgbouncer=true` appended (for connection pooling)
-4. Set `DIRECT_URL` with the direct connection string (no pooling)
-
-#### Step 3: Configure Environment Variables
-
-In the Vercel dashboard, go to **Settings > Environment Variables** and add:
-
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `DATABASE_URL` | Yes | PostgreSQL connection string (with pooling) |
-| `DIRECT_URL` | Yes | PostgreSQL direct connection (for migrations) |
-| `NEXTAUTH_SECRET` | Yes | `openssl rand -base64 32` |
-| `NEXTAUTH_URL` | Yes | Your production URL (e.g., `https://your-app.vercel.app`) |
-| `NEXT_PUBLIC_APP_URL` | Yes | Same as NEXTAUTH_URL |
-| `NEXT_PUBLIC_APP_NAME` | Yes | App display name (e.g., "GreenLeaf CBD") |
-| `CSRF_SECRET` | Yes | `openssl rand -base64 32` |
-| `ALLOWED_ORIGINS` | Yes | Your production URL |
-
-See `.env.production.example` for all optional variables (email, payments, AI, analytics).
-
-#### Step 4: Deploy
-
-1. After setting environment variables, trigger a redeploy:
-   - Go to "Deployments" tab
-   - Click the three dots on the latest deployment
-   - Select "Redeploy"
-2. The build command (`npx prisma generate && npm run build`) runs automatically
-
-#### Step 5: Run Database Migrations
-
-After the first successful deploy, push the schema to your database:
-
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Link to your project
-vercel link
-
-# Run prisma db push using your production env
-vercel env pull .env.production.local
-npx prisma db push --schema=prisma/schema.prisma
-npx prisma db seed
-```
-
-Alternatively, you can use Vercel's "Functions" tab or connect directly to the database with your favorite SQL client.
-
-#### Step 6: Verify
-
-- Visit `https://your-app.vercel.app/api/health` to confirm the deployment is running
-- Visit `https://your-app.vercel.app/login` to access the application
-
-#### Deployment Notes
-
-- The project deploys to the `iad1` (US East) region by default. Change `regions` in `vercel.json` to deploy closer to your users.
-- Prisma Client is generated at build time via the `buildCommand` in `vercel.json`.
-- Three.js components use dynamic imports with `ssr: false` to prevent server-side rendering issues.
-- ESLint and TypeScript errors are ignored during builds to prevent non-blocking warnings from failing deploys.
-
-#### Custom Domain
-
-1. In Vercel dashboard, go to **Settings > Domains**
-2. Add your custom domain
-3. Update `NEXTAUTH_URL`, `NEXT_PUBLIC_APP_URL`, and `ALLOWED_ORIGINS` to match
-
-### Docker (Optional)
-
-```bash
-docker-compose up -d
-```
-
-## 📚 Documentation
-
-- [Architecture](./docs/ARCHITECTURE.md)
-- [Database Schema](./docs/DATABASE.md)
-- [API Reference](./docs/API.md)
-- [Security](./docs/SECURITY.md)
-- [Deployment](./docs/DEPLOYMENT.md)
-
-## 🤝 Contributing
-
-This is a proprietary platform. For internal development guidelines, see [CONTRIBUTING.md](./CONTRIBUTING.md).
-
-## 📄 License
-
-Proprietary - All rights reserved
-
-## 🆘 Support
-
-For support, contact: support@example.com
+# The Best Dreams
+
+Tienda online de **CBD y cáñamo legal premium** con estética _lujo rústico natural_
+(negro/dorado + verde tierra) y animaciones 3D. Construida con Next.js (App Router),
+TypeScript, Tailwind CSS y react-three-fiber sobre una capa de comercio **mock**
+diseñada para conectarse más adelante a Shopify o Medusa sin tocar la UI.
+
+> **Slogan:** _Donde hay calidad no hay competencia._
+> **Zonas de servicio:** Algemesí · Sueca · Tavernes · Carcaixent (Valencia, España).
 
 ---
 
-Built with ❤️ using Next.js, TypeScript, and cutting-edge web technologies.
+## Tabla de contenidos
+
+- [Stack técnico](#stack-técnico)
+- [Prerrequisitos](#prerrequisitos)
+- [Puesta en marcha](#puesta-en-marcha)
+- [Scripts](#scripts)
+- [Variables de entorno](#variables-de-entorno)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Sistema de diseño y tokens](#sistema-de-diseño-y-tokens)
+- [Cambiar el logo](#cambiar-el-logo)
+- [Sustituir las mascotas placeholder por modelos 3D finales](#sustituir-las-mascotas-placeholder-por-modelos-3d-finales)
+- [Sustituir la capa de comercio mock](#sustituir-la-capa-de-comercio-mock)
+- [Checklists](#checklists)
+- [Nota sobre el entorno de build (importante)](#nota-sobre-el-entorno-de-build-importante)
+
+---
+
+## Stack técnico
+
+- **Next.js 14** (App Router) + **React 18** + **TypeScript**
+- **Tailwind CSS** con tokens de diseño expuestos como variables CSS
+- **react-three-fiber** / **@react-three/drei** / **three** para mascotas y escenas 3D
+- **framer-motion** para animación de UI y transiciones de página
+- **zustand** para el estado del carrito (con persistencia)
+- **next/font** (Playfair Display + Inter) e **i18n** propio (ES por defecto, EN/FR/IT preparados)
+
+## Prerrequisitos
+
+- **Node.js 22** (LTS). Se recomienda gestionarlo con `nvm` (`nvm use 22`).
+- **npm** (incluido con Node). No es necesario ningún servicio externo: el proyecto arranca
+  contra datos mock.
+
+## Puesta en marcha
+
+```bash
+npm install
+npm run dev      # http://localhost:3000
+```
+
+Copia `.env.example` a `.env.local` si quieres personalizar variables (todas son opcionales
+mientras el proveedor de comercio sea `mock`; ver [Variables de entorno](#variables-de-entorno)).
+
+> El fichero `next-env.d.ts` lo genera automáticamente Next.js en el primer arranque
+> (`next dev` / `next build`) y está en `.gitignore`.
+
+## Scripts
+
+Todos definidos en `package.json`:
+
+| Script              | Comando              | Descripción                       |
+| ------------------- | -------------------- | --------------------------------- |
+| `npm run dev`       | `next dev`           | Servidor de desarrollo en `:3000` |
+| `npm run build`     | `next build`         | Build de producción               |
+| `npm run start`     | `next start`         | Servir el build de producción     |
+| `npm run lint`      | `next lint`          | ESLint (config `next`)            |
+| `npm run typecheck` | `tsc --noEmit`       | Comprobación de tipos             |
+| `npm run format`    | `prettier --write .` | Formateo con Prettier             |
+
+## Variables de entorno
+
+Definidas en `.env.example`. El build actual usa la capa de comercio **mock**, así que
+**ninguna es obligatoria** todavía. Cópialas a `.env.local` cuando conectes un backend real.
+
+| Variable                                      | Por defecto | Uso                                                      |
+| --------------------------------------------- | ----------- | -------------------------------------------------------- |
+| `NEXT_PUBLIC_COMMERCE_PROVIDER`               | `mock`      | Selector de proveedor: `mock`, `shopify` o `medusa`      |
+| `NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN`            | (vacío)     | Dominio de la tienda Shopify (`tu-tienda.myshopify.com`) |
+| `NEXT_PUBLIC_SHOPIFY_STOREFRONT_ACCESS_TOKEN` | (vacío)     | Token del Storefront API de Shopify                      |
+| `NEXT_PUBLIC_MEDUSA_BACKEND_URL`              | (vacío)     | URL del backend Medusa (`http://localhost:9000`)         |
+| `NEXT_PUBLIC_SITE_URL`                        | (vacío)     | URL pública del sitio (metadatos, canonical, sitemap)    |
+
+## Estructura del proyecto
+
+```
+.
+├── app/                       # App Router: rutas, layouts y páginas
+│   ├── layout.tsx             # Layout raíz: fuentes next/font, AppShell
+│   ├── globals.css            # Tokens de diseño (variables CSS) + estilos base
+│   ├── page.tsx               # Home (hero 3D, secciones, novedades)
+│   ├── loading.tsx            # Loader de marca a nivel de app
+│   ├── not-found.tsx          # Página 404
+│   ├── tienda/                # Catálogo
+│   │   ├── page.tsx           # Listado general
+│   │   └── [categoria]/page.tsx  # Categoría (SSG vía generateStaticParams)
+│   ├── producto/[slug]/page.tsx  # Ficha de producto (SSG)
+│   ├── analisis/page.tsx      # Análisis de laboratorio (PDFs)
+│   ├── blog/                  # Magazine
+│   │   ├── page.tsx           # Índice de artículos
+│   │   └── [slug]/page.tsx    # Artículo (SSG)
+│   ├── sobre-nosotros/page.tsx
+│   ├── contacto/page.tsx
+│   ├── carrito/page.tsx       # Carrito (estado Zustand)
+│   ├── checkout/page.tsx      # Checkout multi-paso (MOCK, sin pago real)
+│   └── legal/                 # Páginas legales
+│       ├── aviso-legal/page.tsx
+│       ├── terminos/page.tsx
+│       ├── privacidad/page.tsx
+│       ├── cookies/page.tsx
+│       └── politica-envios/page.tsx
+├── components/
+│   ├── layout/                # AppShell, Header, Footer
+│   ├── legal/                 # LegalLayout (+ bloque LEGAL_DISCLAIMERS)
+│   ├── mascots/               # Sistema de mascotas 3D (ver más abajo)
+│   │   ├── Mascot.tsx         # <Mascot name=... /> reutilizable (API pública)
+│   │   ├── MascotCanvas.tsx   # <Canvas> r3f, dpr clamping, mapeo de eventos
+│   │   ├── Mascot2DFallback.tsx  # Silueta 2D (sin WebGL / reduced-motion)
+│   │   ├── registry.ts        # ÚNICA costura de intercambio a .glb
+│   │   ├── types.ts           # MascotName, MascotEvent, MascotProps...
+│   │   └── scenes/            # Escenas por mascota (placeholders low-poly)
+│   ├── product/               # ProductCard, ProductDetail
+│   ├── shop/                  # ShopCatalog, CatalogFilters
+│   ├── sections/              # Hero3D, StorySection, TrustBlock, Newsletter
+│   ├── ui/                    # Button, Badge, GlassCard, Section
+│   ├── AgeGate.tsx            # Modal de verificación de edad 18+
+│   ├── BrandLoader.tsx        # Loader con paloma dorada
+│   └── PageTransition.tsx     # Transiciones de ruta (framer-motion)
+├── lib/
+│   ├── commerce/              # Capa de comercio (costura de intercambio)
+│   │   ├── index.ts           # API pública: getProducts, getProductBySlug...
+│   │   ├── mock-data.ts       # Datos de ejemplo (categorías + productos)
+│   │   └── types.ts           # Category, Product, WeightVariant...
+│   ├── store/cart.ts          # Store Zustand del carrito
+│   ├── i18n/                  # config + provider + diccionarios es/en/fr/it
+│   ├── content/blog.ts        # Contenido del magazine
+│   ├── motion/                # useReducedMotion, useInViewOnce
+│   └── routes.ts              # Tabla central de rutas
+├── public/
+│   ├── brand/                 # logo.svg (placeholder) + README (swap del logo)
+│   ├── mascots/               # destino de los .glb finales + README
+│   ├── products/              # imágenes de producto (placeholders)
+│   └── lab-pdfs/              # certificados de análisis
+├── docs/
+│   ├── PERFORMANCE_CHECKLIST.md
+│   └── LEGAL_CHECKLIST.md
+├── tailwind.config.ts         # Tema Tailwind (mapea los tokens CSS)
+├── next.config.mjs
+└── tsconfig.json
+```
+
+## Sistema de diseño y tokens
+
+Los tokens de color y tipografía se definen como **variables CSS** en `app/globals.css`
+y se exponen a Tailwind en `tailwind.config.ts`, de modo que se usan como utilidades
+(`bg-black`, `text-gold`, `text-offwhite`, etc.).
+
+| Token          | Hex       | Uso                                   |
+| -------------- | --------- | ------------------------------------- |
+| `black`        | `#0B0B0A` | fondo base                            |
+| `gold`         | `#C9A24B` | acentos, CTAs, bordes                 |
+| `gold-bright`  | `#E8C572` | brillos, glows                        |
+| `offwhite`     | `#F7F5F0` | texto sobre oscuro, aire              |
+| `green-rustic` | `#3E4B34` | superficies secundarias               |
+| `green-moss`   | `#5A6B45` | iconografía natural, textura orgánica |
+
+Tipografía: titulares en **Playfair Display**, cuerpo en **Inter**, ambas cargadas con
+`next/font/google` y `display: "swap"` (ver `app/layout.tsx`).
+
+---
+
+## Cambiar el logo
+
+La marca real es un **águila dorada coronada con el wordmark "THE BEST DREAMS"**.
+
+1. Coloca la imagen final en **`public/brand/logo.png`** (fondo transparente, idealmente
+   ≥ 1024px de ancho, dorado sobre transparente para asentar sobre el fondo oscuro).
+2. No hace falta tocar código: `components/layout/Header.tsx` referencia `/brand/logo.png`
+   y usa **`/brand/logo.svg`** como _fallback_ automático (vía `onError`) mientras el PNG
+   no exista.
+
+El `public/brand/logo.svg` que se incluye es un **placeholder original** (emblema geométrico
+dorado), no una reproducción del águila real. Detalles y paleta en
+[`public/brand/README.md`](public/brand/README.md).
+
+## Sustituir las mascotas placeholder por modelos 3D finales
+
+El sistema de mascotas es un `<Mascot name="lion" />` reutilizable respaldado por escenas r3f.
+Hoy cada mascota usa un **placeholder de geometría primitiva low-poly** (material toon). Los
+`.glb` definitivos se conectan con un **cambio de una sola línea**, sin tocar los llamadores
+ni la lógica de idle/eventos.
+
+Roles de la tripulación: **lion** (guía/jefe → modal de edad + onboarding), **eagle**
+(experto → producto/laboratorio), **panda** y **monkey** (ofertas → carrito/newsletter),
+**dove** (paloma dorada, acento del loader).
+
+1. Copia los modelos con estos nombres exactos bajo `public/mascots/`:
+
+   ```
+   public/mascots/lion.glb
+   public/mascots/eagle.glb
+   public/mascots/panda.glb
+   public/mascots/monkey.glb
+   public/mascots/dove.glb
+   ```
+
+2. Crea una escena GLB que respete el mismo contrato `MascotSceneProps`
+   (por ejemplo `components/mascots/scenes/GLBScene.tsx`) usando `useGLTF`:
+
+   ```tsx
+   import { useGLTF } from "@react-three/drei";
+   import { useRef } from "react";
+   import * as THREE from "three";
+   import type { MascotSceneProps } from "../types";
+   import { useMascotMotion } from "./useMascotMotion";
+
+   export function makeGLBScene(url: string) {
+     function GLBScene({ event, reducedMotion }: MascotSceneProps) {
+       const group = useRef<THREE.Group>(null);
+       useMascotMotion(group, event, reducedMotion, true);
+       const { scene } = useGLTF(url);
+       return (
+         <group ref={group}>
+           <primitive object={scene} />
+         </group>
+       );
+     }
+     return GLBScene;
+   }
+   ```
+
+3. Cambia **una línea** en `components/mascots/registry.ts`:
+
+   ```diff
+   - lion: LionScene,
+   + lion: makeGLBScene("/mascots/lion.glb"),
+   ```
+
+No cambia ningún llamador (`<Mascot />`), ni el idle loop, ni las reacciones
+(hover / click / scroll-into-view / add-to-cart). El fallback 2D
+(`Mascot2DFallback.tsx`) y el respeto a `prefers-reduced-motion` siguen igual.
+
+Guía completa (presupuesto de polígonos, escala, materiales toon) en
+[`public/mascots/README.md`](public/mascots/README.md).
+
+## Sustituir la capa de comercio mock
+
+Toda la app lee los datos a través de la API pública de `lib/commerce/index.ts`. Es una
+**capa de datos pura** (no importa React ni Next) implementada hoy sobre `lib/commerce/mock-data.ts`.
+Para ir a producción, reimplementa el cuerpo de estas funciones contra el **Shopify Storefront API**
+o **Medusa.js** manteniendo **exactamente las mismas firmas y tipos** (de `lib/commerce/types.ts`).
+Los llamadores de la UI (páginas, componentes y el store del carrito) **no cambian**.
+
+Firmas exportadas que deben conservarse:
+
+```ts
+getCategories(): Promise<Category[]>
+getCategoryBySlug(slug: string): Promise<Category | undefined>
+getProducts(args?: GetProductsArgs): Promise<Product[]>
+getProductBySlug(slug: string): Promise<Product | undefined>
+getFeaturedProducts(): Promise<Product[]>
+searchProducts(query: string): Promise<Product[]>
+priceFrom(product: Product): number      // helper síncrono
+isAvailable(product: Product): boolean   // helper síncrono
+```
+
+Las funciones de lectura ya son `async` a propósito, de modo que el mock y un backend de red
+comparten la firma y solo cambia el cuerpo. Usa el selector `NEXT_PUBLIC_COMMERCE_PROVIDER`
+(`mock` | `shopify` | `medusa`) y las variables de Shopify/Medusa de `.env.example` para
+elegir el adaptador.
+
+> **El checkout es actualmente un MOCK.** `app/checkout/page.tsx` simula el flujo
+> (envío → método → resumen → confirmación) y genera una referencia de pedido ficticia; no hay
+> pasarela de pago real. Sustitúyelo por el checkout de Shopify/Medusa al conectar el backend.
+
+## Checklists
+
+- [`docs/PERFORMANCE_CHECKLIST.md`](docs/PERFORMANCE_CHECKLIST.md): objetivos Lighthouse ≥ 90 y
+  medidas concretas de rendimiento a verificar antes del lanzamiento.
+- [`docs/LEGAL_CHECKLIST.md`](docs/LEGAL_CHECKLIST.md): disclaimers CBD obligatorios en España,
+  cada uno mapeado a su ubicación real en la app.
+
+## Nota sobre el entorno de build (importante)
+
+Este proyecto se generó en un sandbox con **modo de red `INTEGRATIONS_ONLY`**, donde el
+registro de npm (`registry.npmjs.org`) estaba **bloqueado (403)**. Por tanto,
+`npm install`, `npm run build`, `npm run typecheck` y `npm run lint` **no pudieron ejecutarse**
+en ese entorno porque requieren descargar dependencias. Ejecuta esos comandos en un entorno
+con acceso al registro de npm:
+
+```bash
+npm install
+npm run typecheck && npm run lint && npm run build
+```
+
+Además, **solo en ese sandbox** Node debía invocarse como `env -u NODE_OPTIONS <comando>`
+(porque `NODE_OPTIONS` apuntaba a un bootstrap inexistente que hacía fallar a Node). En un
+entorno de desarrollo normal esto **no** es necesario: usa los comandos tal cual.
